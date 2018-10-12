@@ -2,7 +2,9 @@ from django.shortcuts import render, redirect
 from .models import Automovil, Marca
 #importamos la mensajeria de django
 from django.contrib import messages
-#nuevo comentario
+#importamos decorador que nos permitira solicitar login en determiado view
+
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -22,7 +24,8 @@ def listado(request):
         'autos':autos
     })
 
-
+# con login_required nadie puede entrar sin entrar antes por el login
+@login_required
 def formulario(request):
     marcas = Marca.objects.all()
     #declaramos el diccionario de variables que se enviaran al template

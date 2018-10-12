@@ -30,6 +30,12 @@
            <li>
                <a href="#">Historia</a>
            </li>
+
+           {% if request.user.is_authenticated %} <!--solo si esta autenticado aparecera el boton-->
+           <li>
+               <a href="{% url 'logout' %}">Cerrar Sesión</a>
+           </li>
+           {% endif %}
        </ul>
     </header>
     <div class="landing">
